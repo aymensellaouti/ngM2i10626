@@ -1,0 +1,11 @@
+<div (click)="showHide()" class="alert alert-success">
+   <!-- Balises
+      // Attributs => Etat / Stat
+
+      // Event => Comportement | Behaviour
+   -->
+  <p [hidden]="isHidden">Bonjour {{ name }}</p>
+  <input #myInput (change)="changeMessage(myInput.value)" type="text" class="form-control">
+  La valeur de l'input est : {{message}}
+  <app-second/>
+</div>
