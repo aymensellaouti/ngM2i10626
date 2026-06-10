@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { Cv } from '../model/cv.model';
 
 @Component({
   selector: 'app-cv-card',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './cv-card.css',
 })
 export class CvCard {
-
+  cv = input<Cv | null>(null);
 }

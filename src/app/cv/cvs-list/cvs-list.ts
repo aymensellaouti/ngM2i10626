@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { Cv } from '../model/cv.model';
+import { CvItem } from "../cv-item/cv-item";
 
 @Component({
   selector: 'app-cvs-list',
-  imports: [],
+  imports: [CvItem],
   templateUrl: './cvs-list.html',
   styleUrl: './cvs-list.css',
 })
 export class CvsList {
-
+  cvs = input<Cv[]>([]);
 }

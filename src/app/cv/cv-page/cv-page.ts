@@ -1,9 +1,11 @@
-import { Component, signal } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { Cv } from '../model/cv.model';
+import { CvsList } from "../cvs-list/cvs-list";
+import { CvCard } from "../cv-card/cv-card";
 
 @Component({
   selector: 'app-cv-page',
-  imports: [],
+  imports: [CvsList, CvCard],
   templateUrl: './cv-page.html',
   styleUrl: './cv-page.css',
 })
@@ -15,4 +17,6 @@ export class CvPage {
     new Cv(4, 'Cabaret', 'Kevin', 'Dev', '12345699', 20, 'rotating_card_profile2.png'),
     new Cv(5, 'Sellaouti', 'Aymen', 'Dev', '12345600', 20, 'rotating_card_profile3.png'),
   ]);
+
+  selectedCv = signal<Cv | null>(null);
 }

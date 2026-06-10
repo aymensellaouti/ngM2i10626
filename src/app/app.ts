@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { TtcComponent } from "./signals/ttc/ttc.component";
 import { Pere } from "./commInterCompo/pere/pere";
+import { CvPage } from "./cv/cv-page/cv-page";
 
 @Component({
   // Si tu veux appeler ce composant crée une balsie <app-root/>
   selector: 'app-root',
   // importe tous ce qui est nécessaire pour le HTML
-  imports: [TtcComponent, Pere],
+  imports: [TtcComponent, Pere, CvPage],
   // c'est le html que je gére (moi le composant)
   templateUrl: './app.html',
   // Le style associé uniquement à ce composant
