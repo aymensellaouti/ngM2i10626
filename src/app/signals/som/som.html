@@ -1,0 +1,8 @@
+<input [(ngModel)]="x" type="number" class="form-control">
+<input [(ngModel)]="y" type="number" class="form-control">
+<div class="alert alert-success">
+  {{x()}} + {{y()}} = {{z()}} / {{ddZ()}}
+</div>
+
+<button (click)="addName()">Add Name</button>
+<div>Le nombre de name est : {{namesNumber()}}</div>
