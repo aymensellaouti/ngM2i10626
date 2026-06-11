@@ -10,6 +10,4 @@ import { CvItem } from "../cv-item/cv-item";
 })
 export class CvsList {
   cvs = input<Cv[]>([]);
-
-  forwardCv = output<Cv>();
 }
