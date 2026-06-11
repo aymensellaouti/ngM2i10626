@@ -1,4 +1,5 @@
 <p
+  appRainbow
   (click)="interrupteur()"
   [class]="{
     'on': isOn(),
@@ -6,6 +7,8 @@
   }"
   class="ampoule">ngclass works!</p>
 
-<div appHighlightSignal>cc je test ma directive</div>
+<div appRainbow appHighlightSignal>cc je test ma directive</div>
 <div appHighlightSignal [in]="'blue'" [out]="'green'">cc je test ma directive</div>
 <div appHighlightSignal [in]="'pink'" [out]="'gold'">cc je test ma directive</div>
+
+<input type="text" appRainbow>
