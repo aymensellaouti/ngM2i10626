@@ -1,8 +1,9 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { Cv } from '../model/cv.model';
 import { CvsList } from "../cvs-list/cvs-list";
 import { CvCard } from "../cv-card/cv-card";
 import { DatePipe, UpperCasePipe } from '@angular/common';
+import { LoggerService } from '../../services/logger-service';
 
 @Component({
   selector: 'app-cv-page',
@@ -19,6 +20,9 @@ export class CvPage {
     new Cv(4, 'Cabaret', 'Kevin', 'Dev', '12345699', 20, ''),
     new Cv(5, 'Sellaouti', 'Aymen', 'Dev', '12345600', 20, '         '),
   ]);
-
+  logger = inject(LoggerService);
   selectedCv = signal<Cv | null>(null);
+  constructor() {
+    this.logger.log('cc je suis le cvComponent')
+  }
 }
