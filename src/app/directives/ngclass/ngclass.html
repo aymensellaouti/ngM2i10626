@@ -1,0 +1,7 @@
+<p
+  (click)="interrupteur()"
+  [class]="{
+    'on': isOn(),
+    'off': !isOn()
+  }"
+  class="ampoule">ngclass works!</p>

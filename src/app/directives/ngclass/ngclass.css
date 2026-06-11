@@ -1,0 +1,16 @@
+.ampoule {
+  width: 150px;
+  heigth: 150px;
+  padding: 50px;
+  border: solid 2px black;
+  border-radius: 50%;
+}
+
+.on {
+  background-color: yellow;
+}
+
+.off {
+  background-color: black;
+  color: white;
+}
