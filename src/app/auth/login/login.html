@@ -1,12 +1,15 @@
-<form>
+<form #loginForm="ngForm">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input #emailInput="ngModel" ngModel required email name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    @if (emailInput.invalid && emailInput.touched) {
+      <div class="alert alert-danger">Le email doit être valide</div>
+    }
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+    <input ngModel required minlength="4" name="password" type="password" class="form-control" id="exampleInputPassword1">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary">Submit</button>
 </form>
