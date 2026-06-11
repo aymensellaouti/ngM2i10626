@@ -7,6 +7,7 @@ import { Color } from './components/color/color';
 import { Second } from './components/second/second';
 import { DetailsCvComponent } from './cv/details-cv/details-cv.component';
 import { NF404 } from './composants/nf404/nf404';
+import { Login } from './auth/login/login';
 
 export const routes: Routes = [
   // Ici qu'on va définir nos routes
@@ -15,6 +16,7 @@ export const routes: Routes = [
   {path: 'cv', component: CvPage},
   {path: 'cv/:id', component: DetailsCvComponent},
   {path: 'word', component: MiniWordComponent},
+  {path: 'login', component: Login},
   {path: 'color', component: Color},
   {path: 'hello/:name/:firstname', component: Second},
   {path: '**', component: NF404},
