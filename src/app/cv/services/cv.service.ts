@@ -32,7 +32,7 @@ export class CvService {
    * @returns Cv | null
    */
   findCvById(id: number): Cv | null {
-    return null;
+    return this.#cvs().find((cv) => cv.id == id) ?? null;
   }
 
   /**
@@ -42,8 +42,8 @@ export class CvService {
    * @param cv : Cv
    * @returns boolean
    */
-  deleteCv(cv: Cv): boolean {
-    return false;
+  deleteCv(cv: Cv): void {
+    this.#cvs.update((actualsCv) => actualsCv.filter((cvEnCours) => cvEnCours != cv));
   }
 
   /**
