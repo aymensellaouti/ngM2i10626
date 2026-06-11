@@ -1,8 +1,10 @@
 import { Component, signal } from '@angular/core';
+import { Highlight } from "../highlight";
+import { HighlightSignal } from "../highlight-signal";
 
 @Component({
   selector: 'app-ngclass',
-  imports: [],
+  imports: [Highlight, HighlightSignal],
   templateUrl: './ngclass.html',
   styleUrl: './ngclass.css',
 })
