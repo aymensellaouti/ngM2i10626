@@ -4,6 +4,7 @@ import { CvsList } from "../cvs-list/cvs-list";
 import { CvCard } from "../cv-card/cv-card";
 import { DatePipe, UpperCasePipe } from '@angular/common';
 import { LoggerService } from '../../services/logger-service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cv-page',
@@ -22,7 +23,10 @@ export class CvPage {
   ]);
   logger = inject(LoggerService);
   selectedCv = signal<Cv | null>(null);
+  toastr = inject(ToastrService);
+
   constructor() {
-    this.logger.log('cc je suis le cvComponent')
+    this.toastr.info('Bienvenu dans notre CvTech :D')
+    this.logger.log('cc je suis le cvComponent');
   }
 }
