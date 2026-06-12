@@ -52,6 +52,7 @@ export class CvService {
    * @returns Observable Cv
    */
   deleteCvByIdFromApi(id: number): Observable<{count: number}> {
+    //2 Récupérer le token puis créer ou un param ou un header pour pouvoir supprimer
     //const params = new HttpParams().set()
     //const headers = new HttpHeaders().set()
     return this.http.delete<{ count: number }>(APP_API.cv + id, {
