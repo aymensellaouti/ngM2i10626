@@ -1,3 +1,8 @@
+@if(todosResources.isLoading()) {
+<div class="alert alert-info">
+  is Loading...
+</div>
+} @else {
 <div class="row">
   <div class="col">
     <ol class="list-group">
@@ -12,15 +17,20 @@
       }
 
     </ol>
+    <button (click)="todosResources.reload()" class="btn btn-success">
+      relaod
+    </button>
+
     <div class="alert alert-danger">
       <ol class="list-group">
-        @for (todo of todosApi(); track todo.id) {
+        @for (todo of todosResources.value(); track todo.id) {
         <li class="list-group-item">
           {{todo.title}}
         </li>
         }
       </ol>
     </div>
+
   </div>
   <div class="col">
     name:
@@ -34,3 +44,4 @@
     </button>
   </div>
 </div>
+}
