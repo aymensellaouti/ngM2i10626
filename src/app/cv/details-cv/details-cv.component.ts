@@ -18,15 +18,29 @@ export class DetailsCvComponent {
   router = inject(Router);
   constructor() {
     const id = this.acr.snapshot.params['id'];
-    this.cv.set(this.cvService.findCvById(id));
-    if (!this.cv()) this.router.navigate([APP_ROUTES.cv]);
+    //this.cv.set(this.cvService.findCvById(id));
+    this.cvService.getCvByIdFromApi(id).subscribe({
+      next: (cv) => {
+        this.cv.set(cv);
+      },
+      error: (e) => {
+        this.router.navigate([APP_ROUTES.cv]);
+      }
+    })
+    // if (!this.cv())
   }
 
   delete() {
     const cv = this.cv();
     if (cv) {
-      this.cvService.deleteCv(cv);
-      this.router.navigate([APP_ROUTES.cv]);
+       this.cvService.deleteCvByIdFromApi(cv.id).subscribe({
+         next: (cv) => {
+           this.router.navigate([APP_ROUTES.cv]);
+         },
+         error: (e) => {
+          console.log(e);
+         },
+       });
     }
   }
 }

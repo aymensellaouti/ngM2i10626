@@ -1,5 +1,8 @@
-import {  Injectable, Signal, signal } from '@angular/core';
+import {  inject, Injectable, Signal, signal } from '@angular/core';
 import { Cv } from '../model/cv.model';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { APP_API } from '../../config/app-api.config';
 
 
 @Injectable({
@@ -13,7 +16,7 @@ export class CvService {
     new Cv(4, 'Cabaret', 'Kevin', 'Dev', '12345699', 20, ''),
     new Cv(5, 'Sellaouti', 'Aymen', 'Dev', '12345600', 20, '         '),
   ]);
-
+  http = inject(HttpClient);
   #selectedCv = signal<Cv | null>(null);
   selectedCv = this.#selectedCv.asReadonly();
   /**
@@ -22,6 +25,38 @@ export class CvService {
    */
   getCvs(): Signal<Cv[]> {
     return this.#cvs.asReadonly();
+  }
+
+  /**
+   * Retourne la liste des cvs
+   * @returns Observable Cv[]
+   */
+  getCvsFromApi(): Observable<Cv[]> {
+    return this.http.get<Cv[]>(APP_API.cv);
+  }
+
+  /**
+   * Retourne un cv via son id
+   *
+   * @param id: l'id du cv à récupérer
+   * @returns Observable Cv
+   */
+  getCvByIdFromApi(id: number): Observable<Cv> {
+    return this.http.get<Cv>(APP_API.cv + id);
+  }
+
+  /**
+   * Supprime un Cv via son id
+   *
+   * @param id: l'id du cv à supprimer
+   * @returns Observable Cv
+   */
+  deleteCvByIdFromApi(id: number): Observable<{count: number}> {
+    //const params = new HttpParams().set()
+    //const headers = new HttpHeaders().set()
+    return this.http.delete<{ count: number }>(APP_API.cv + id, {
+      //params:
+    });
   }
 
   /**
