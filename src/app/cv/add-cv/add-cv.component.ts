@@ -1,5 +1,7 @@
 import { Component, inject } from "@angular/core";
 import { FormBuilder, Validators, AbstractControl, ReactiveFormsModule } from "@angular/forms";
+import { uniqueCinValidator } from "../../asyncvalidators/uniq-cin.validator";
+import { CvService } from "../services/cv.service";
 
 @Component({
   selector: 'app-add-cv',
@@ -9,7 +11,7 @@ import { FormBuilder, Validators, AbstractControl, ReactiveFormsModule } from "@
 })
 export class AddCvComponent {
   formBuilder = inject(FormBuilder);
-
+  cvService = inject(CvService)
   form = this.formBuilder.group(
     {
       name: [
@@ -26,7 +28,7 @@ export class AddCvComponent {
         '',
         {
           validators: [Validators.required, Validators.pattern('[0-9]{8}')],
-          asyncValidators: [],
+          asyncValidators: [uniqueCinValidator(this.cvService)],
           updateOn: 'change',
         },
       ],
@@ -52,15 +54,15 @@ export class AddCvComponent {
     // });
 
     this.age.valueChanges.subscribe({
-      next: age => {
+      next: (age) => {
         if (age >= 18) {
           this.path?.enable();
         } else {
           this.path?.setValue('');
           this.path?.disable();
         }
-      }
-    })
+      },
+    });
   }
   addCv() {}
 
