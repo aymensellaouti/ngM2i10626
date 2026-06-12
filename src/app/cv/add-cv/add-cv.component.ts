@@ -50,6 +50,17 @@ export class AddCvComponent {
     //     console.log(value);
     //   },
     // });
+
+    this.age.valueChanges.subscribe({
+      next: age => {
+        if (age >= 18) {
+          this.path?.enable();
+        } else {
+          this.path?.setValue('');
+          this.path?.disable();
+        }
+      }
+    })
   }
   addCv() {}
 

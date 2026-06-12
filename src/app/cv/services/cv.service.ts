@@ -52,7 +52,7 @@ export class CvService {
    * @param id: l'id du cv à supprimer
    * @returns Observable Cv
    */
-  deleteCvByIdFromApi(id: number): Observable<{count: number}> {
+  deleteCvByIdFromApi(id: number): Observable<{ count: number }> {
     return this.http.delete<{ count: number }>(APP_API.cv + id);
   }
 
@@ -76,6 +76,18 @@ export class CvService {
    */
   deleteCv(cv: Cv): void {
     this.#cvs.update((actualsCv) => actualsCv.filter((cvEnCours) => cvEnCours != cv));
+  }
+
+  /**
+   * Elle cherche les cvs dont la valeur de la propriété mentionnée est égale à la valeur soumise
+   *
+   * @param property le nom du champ de recherche
+   * @param value la valeur du champ de recherche
+   * @returns Observable Cv[]
+   */
+  getCvsByProperty(property: string, value: string): Observable<Cv[]> {
+    const params = new HttpParams().set('filter', `{"where":{"${property}":"${value}"}}`);
+    return this.http.get<Cv[]>(APP_API.cv, { params });
   }
 
   /**
